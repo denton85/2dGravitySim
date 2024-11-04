@@ -42,6 +42,8 @@ func _unhandled_input(event):
 	if Input.is_action_just_pressed("zoom_out"):
 		camera.zoom.x -= 0.1
 		camera.zoom.y -= 0.1
+		label.text = str(snappedf(camera.zoom.x, 0.1))
+		
 		
 	if Input.is_action_just_pressed("switch_view"):
 		camera.switched = true
