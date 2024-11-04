@@ -1,4 +1,4 @@
-**This is a simple 2D gravity sim. **
+**This is a simple 2D gravity sim. Mess around with different starting conditions and see if stable orbits emerge.**
 
 Use up and down arrows to zoom in and out, and left and right arrows to adjust the speed scale. Press Tab to switch the camera from star to star. If you want to play around with this, download the project and open with Godot 4.2, from there you can run in editor.
 
