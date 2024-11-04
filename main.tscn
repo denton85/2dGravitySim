@@ -34,10 +34,16 @@ position = Vector2(793, 33)
 position = Vector2(1286, 103)
 
 [node name="Star6" parent="." instance=ExtResource("2_8n2ff")]
-position = Vector2(141, 227)
+position = Vector2(142, 227)
 mass = 7777.0
-c_min = 100.0
-c_max = 200.0
+custom_velocity = true
+c_dir = Vector2(4, -0.5)
+c_max = 50.0
+
+[node name="Star7" parent="." instance=ExtResource("2_8n2ff")]
+position = Vector2(407, 199)
+custom_velocity = true
+c_dir = Vector2(4, 3)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(569, 325)

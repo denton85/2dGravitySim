@@ -1,14 +1,21 @@
-[gd_scene load_steps=6 format=3 uid="uid://bny6a1ct5lf5f"]
+[gd_scene load_steps=9 format=3 uid="uid://bny6a1ct5lf5f"]
 
 [ext_resource type="Script" path="res://star.gd" id="1_puwqu"]
 [ext_resource type="Texture2D" uid="uid://gnn3ndmqev5q" path="res://round.png" id="2_aqruo"]
 [ext_resource type="PackedScene" uid="uid://ds086iwoqsw68" path="res://tracers.tscn" id="3_osr5l"]
+[ext_resource type="Script" path="res://DirectionIndicator.gd" id="4_ewsle"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7stv1"]
 radius = 5.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mwnj7"]
 radius = 12.0
+
+[sub_resource type="Curve" id="Curve_4rs6f"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_oxie2"]
 
 [node name="Star" type="CharacterBody2D"]
 collision_layer = 8
@@ -34,5 +41,15 @@ collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Eat"]
 shape = SubResource("CircleShape2D_mwnj7")
+
+[node name="DirectionIndicator" type="Line2D" parent="."]
+points = PackedVector2Array(0, 0, 0, 0)
+width = 5.0
+width_curve = SubResource("Curve_4rs6f")
+gradient = SubResource("Gradient_oxie2")
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+script = ExtResource("4_ewsle")
 
 [connection signal="body_entered" from="Eat" to="." method="_on_eat_body_entered"]
