@@ -24,9 +24,11 @@ func _physics_process(delta):
 			continue
 		else:
 			dir = i.global_position - self.global_position
-			var v = (dir.normalized() * i.mass) / pow(global_position.distance_to(i.global_position), 2)
-			
-			velos.append(v)
+			# A small buffer zone to keep stars from increasing velocity really 
+			# fast when they eat another star. Might need to be adjusted.
+			if global_position.distance_to(i.global_position) >= 16:
+				var v = (dir.normalized() * i.mass) / pow(global_position.distance_to(i.global_position), 2)
+				velos.append(v)
 	
 	var final_dir = Vector2.ZERO
 	for i in velos:
@@ -38,6 +40,11 @@ func _physics_process(delta):
 
 
 func add_star():
+	for i in Global.star_group:
+		if i.mass > self.mass:
+			Global.star_group.append(self)
+			return
+	Global.biggest_star = self
 	Global.star_group.append(self)
 
 

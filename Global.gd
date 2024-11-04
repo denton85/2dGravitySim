@@ -3,6 +3,7 @@ extends Node
 signal add_to_stars
 
 var star_group: Array = []
+var biggest_star: Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

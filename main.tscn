@@ -35,6 +35,7 @@ position = Vector2(1286, 103)
 
 [node name="Star6" parent="." instance=ExtResource("2_8n2ff")]
 position = Vector2(140, 227)
+mass = 7777.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(569, 325)
@@ -70,6 +71,14 @@ offset_right = 999.0
 offset_bottom = 124.0
 text = "Zoom level:"
 
+[node name="SpeedText" type="Label" parent="Camera2D/CanvasLayer/Control"]
+layout_mode = 0
+offset_left = 910.0
+offset_top = 123.0
+offset_right = 1010.0
+offset_bottom = 146.0
+text = "Speed Scale: "
+
 [node name="Label" type="Label" parent="Camera2D/CanvasLayer/Control"]
 layout_mode = 1
 anchors_preset = 1
@@ -81,5 +90,13 @@ offset_right = 948.0
 offset_bottom = 124.0
 grow_horizontal = 0
 text = "1"
+
+[node name="Speed" type="Label" parent="Camera2D/CanvasLayer/Control"]
+layout_mode = 0
+offset_left = 1009.0
+offset_top = 123.0
+offset_right = 1049.0
+offset_bottom = 146.0
+text = "0"
 
 [connection signal="pressed" from="Camera2D/CanvasLayer/Control/Button" to="." method="_on_button_pressed"]
