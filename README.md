@@ -1,8 +1,8 @@
-This is a simple 2D gravity sim. 
+**This is a simple 2D gravity sim. **
 
 Use up and down arrows to zoom in and out, and left and right arrows to adjust the speed scale. Press Tab to switch the camera from star to star. If you want to play around with this, download the project and open with Godot 4.2, from there you can run in editor.
 
-Customizing the starting conditions:
+**Customizing the starting conditions:**
 
 The "Main" Scene has some exported variables for the minimum and maximum starting velocities. Each star chooses a random direction already, so you can adjust these values to test different speeds. 
 
