@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://ds086iwoqsw68"]
+
+[ext_resource type="Script" path="res://tracers.gd" id="1_b8rlq"]
+
+[sub_resource type="Curve" id="Curve_q4lh4"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_wrmd4"]
+colors = PackedColorArray(1, 1, 1, 1, 0.874579, 0.159763, 0.000105118, 1)
+
+[node name="Tracers" type="Line2D"]
+top_level = true
+z_index = -4
+points = PackedVector2Array(10, 10, 121, -26)
+width = 24.0
+width_curve = SubResource("Curve_q4lh4")
+gradient = SubResource("Gradient_wrmd4")
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+antialiased = true
+script = ExtResource("1_b8rlq")

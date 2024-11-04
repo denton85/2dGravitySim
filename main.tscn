@@ -1,0 +1,85 @@
+[gd_scene load_steps=4 format=3 uid="uid://du18id00puho5"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_dm6pr"]
+[ext_resource type="PackedScene" uid="uid://bny6a1ct5lf5f" path="res://star.tscn" id="2_8n2ff"]
+[ext_resource type="Script" path="res://Camera2D.gd" id="3_6whig"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_dm6pr")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = -10
+offset_left = -4736.0
+offset_top = -4642.0
+offset_right = 5264.0
+offset_bottom = 5358.0
+color = Color(0, 0, 0, 1)
+
+[node name="Star" parent="." instance=ExtResource("2_8n2ff")]
+position = Vector2(862, 531)
+mass = 3000.0
+
+[node name="Star2" parent="." instance=ExtResource("2_8n2ff")]
+position = Vector2(386, -119)
+mass = 300.0
+
+[node name="Star3" parent="." instance=ExtResource("2_8n2ff")]
+position = Vector2(428, 662)
+mass = 500.0
+
+[node name="Star4" parent="." instance=ExtResource("2_8n2ff")]
+position = Vector2(793, 33)
+
+[node name="Star5" parent="." instance=ExtResource("2_8n2ff")]
+position = Vector2(1286, 103)
+
+[node name="Star6" parent="." instance=ExtResource("2_8n2ff")]
+position = Vector2(140, 227)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(569, 325)
+script = ExtResource("3_6whig")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Camera2D"]
+
+[node name="Control" type="Control" parent="Camera2D/CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 100.0
+offset_bottom = 60.0
+
+[node name="Button" type="Button" parent="Camera2D/CanvasLayer/Control"]
+custom_minimum_size = Vector2(100, 60)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 1.667
+anchor_right = 2.0
+anchor_bottom = 2.667
+offset_left = 1.0
+offset_top = -20.02
+offset_right = 1.0
+offset_bottom = -20.02
+text = "Quit"
+
+[node name="ZoomText" type="Label" parent="Camera2D/CanvasLayer/Control"]
+layout_mode = 0
+offset_left = 910.0
+offset_top = 101.0
+offset_right = 999.0
+offset_bottom = 124.0
+text = "Zoom level:"
+
+[node name="Label" type="Label" parent="Camera2D/CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 908.0
+offset_top = 101.0
+offset_right = 948.0
+offset_bottom = 124.0
+grow_horizontal = 0
+text = "1"
+
+[connection signal="pressed" from="Camera2D/CanvasLayer/Control/Button" to="." method="_on_button_pressed"]
