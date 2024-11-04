@@ -6,7 +6,9 @@ extends Node2D
 
 var current_star = 0
 
+## Low Limit for intial velocity (across all non custom stars)
 @export var STARTING_MIN_VELOCITY: float = 5.0
+## High Limit for intial velocity (across all non custom stars)
 @export var STARTING_MAX_VELOCITY: float = 25.0
 
 
