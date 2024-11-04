@@ -1,18 +1,36 @@
 extends CharacterBody2D
 
-@export var mass: float = 1000.0
 @onready var label = $MassLabel
 @onready var eat = $Eat
 
-var starting_dir = Vector2(randf_range(-1.0, 1.0), randf_range(-1.0, 1.0)) * randf_range(5.0, 45.0)
+@export var mass: float = 1000.0
+@export var custom_velocity: bool = false # This enables custom initial velocities
+
+@export_group("Custom Initial Direction")
+## Starting X Direction (-1.0 to 1.0) - Note "Custom Velocity" must be enabled for these to work.
+@export_range(-1.0, 1.0) var c_x: float = 0.0 
+## Starting Y Direction (-1.0 to 1.0) - Note "Custom Velocity" must be enabled for these to work.
+@export_range(-1.0, 1.0) var c_y: float = 0.0 
+## Low Limit of Starting Velocity - Note "Custom Velocity" must be enabled for these to work.
+@export var c_min: float = 5.0 
+## High Limit of Starting Velocity - Note "Custom Velocity" must be enabled for these to work.
+@export var c_max: float = 15.0 
+
+var starting_dir = Vector2.ZERO
+
+
 
 func _init():
 	Global.add_to_stars.connect(add_star)
-	velocity = starting_dir
 
 func _ready():
 	label.text = str(mass)
-
+	if custom_velocity == false:
+		starting_dir = Vector2(randf_range(-1.0, 1.0), randf_range(-1.0, 1.0)) * randf_range(get_parent().STARTING_MIN_VELOCITY, get_parent().STARTING_MAX_VELOCITY)
+	else:
+		starting_dir = (Vector2(c_x, c_y) * randf_range(c_min, c_max))
+	velocity = starting_dir
+	
 func _physics_process(delta):
 	var dir = Vector2.ZERO
 	var velos : Array[Vector2]

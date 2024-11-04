@@ -3,7 +3,12 @@ extends Node2D
 @onready var camera = $Camera2D
 @onready var label = $Camera2D/CanvasLayer/Control/Label
 @onready var speed = $Camera2D/CanvasLayer/Control/Speed
+
 var current_star = 0
+
+@export var STARTING_MIN_VELOCITY: float = 5.0
+@export var STARTING_MAX_VELOCITY: float = 25.0
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

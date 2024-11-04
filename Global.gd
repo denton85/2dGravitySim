@@ -2,6 +2,8 @@ extends Node
 
 signal add_to_stars
 
+
+
 var star_group: Array = []
 var biggest_star: Node2D
 
