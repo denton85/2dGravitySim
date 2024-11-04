@@ -3,6 +3,7 @@ extends Node2D
 @onready var camera = $Camera2D
 @onready var label = $Camera2D/CanvasLayer/Control/Label
 @onready var speed = $Camera2D/CanvasLayer/Control/Speed
+@export var fullscreen: bool = true
 
 var current_star = 0
 
@@ -17,6 +18,8 @@ func _ready():
 	Global.add_to_stars.emit()
 	label.text = str(camera.zoom.x)
 	speed.text = str(Engine.time_scale)
+	if fullscreen == true:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
