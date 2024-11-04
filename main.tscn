@@ -28,13 +28,11 @@ position = Vector2(1286, 103)
 [node name="Star6" parent="." instance=ExtResource("2_8n2ff")]
 position = Vector2(142, 227)
 mass = 7777.0
-custom_velocity = true
 c_dir = Vector2(4, -0.5)
 c_max = 50.0
 
 [node name="Star7" parent="." instance=ExtResource("2_8n2ff")]
 position = Vector2(407, 199)
-custom_velocity = true
 c_dir = Vector2(4, 3)
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -45,22 +43,19 @@ script = ExtResource("3_6whig")
 
 [node name="Control" type="Control" parent="Camera2D/CanvasLayer"]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 100.0
-offset_bottom = 60.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Button" type="Button" parent="Camera2D/CanvasLayer/Control"]
 custom_minimum_size = Vector2(100, 60)
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 1.0
-anchor_top = 1.667
-anchor_right = 2.0
-anchor_bottom = 2.667
-offset_left = 1.0
-offset_top = -20.02
-offset_right = 1.0
-offset_bottom = -20.02
+offset_left = 100.0
+offset_top = 80.0
+offset_right = 200.0
+offset_bottom = 140.0
 text = "Quit"
 
 [node name="ZoomText" type="Label" parent="Camera2D/CanvasLayer/Control"]
@@ -84,9 +79,9 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = 908.0
+offset_left = -143.0
 offset_top = 101.0
-offset_right = 948.0
+offset_right = -103.0
 offset_bottom = 124.0
 grow_horizontal = 0
 text = "1"
@@ -98,6 +93,21 @@ offset_top = 123.0
 offset_right = 1049.0
 offset_bottom = 146.0
 text = "0"
+
+[node name="StarSpeed" type="Label" parent="Camera2D/CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -123.0
+offset_right = 20.0
+offset_bottom = -100.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Initial"
 
 [node name="ColorRect" type="ColorRect" parent="Camera2D"]
 z_index = -10

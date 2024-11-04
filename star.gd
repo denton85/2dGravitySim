@@ -5,6 +5,8 @@ extends CharacterBody2D
 
 @export var mass: float = 1000.0
 @export var custom_velocity: bool = false # This enables custom initial velocities
+## Radius around the stars within which gravity is turned off (to stop stars from speeding up each time they eat another star)
+@export var buffer: float = 16
 
 @onready var indicator = $DirectionIndicator
 
@@ -18,7 +20,8 @@ extends CharacterBody2D
 @export var c_max: float = 15.0 
 
 var starting_dir = Vector2.ZERO
-
+var old_pos = Vector2.ZERO
+var current_speed: float
 
 
 func _init():
@@ -48,16 +51,19 @@ func _physics_process(delta):
 			dir = i.global_position - self.global_position
 			# A small buffer zone to keep stars from increasing velocity really 
 			# fast when they eat another star. Might need to be adjusted.
-			if global_position.distance_to(i.global_position) >= 25:
+			if global_position.distance_to(i.global_position) >= buffer:
 				var v = (dir.normalized() * i.mass) / pow(global_position.distance_to(i.global_position), 2)
 				velos.append(v)
 	
 	var final_dir = Vector2.ZERO
 	for i in velos:
 		final_dir = i + final_dir
+		
+	current_speed = (global_position.distance_to(old_pos)) / delta
 	
 	velocity = velocity + (final_dir)
 	
+	old_pos = global_position
 	move_and_slide()
 
 
