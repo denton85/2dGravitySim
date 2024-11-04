@@ -12,4 +12,6 @@ func _process(delta):
 	if !switched:
 		global_position = Global.biggest_star.global_position
 	else:
-		global_position = target_star.global_position
+		if target_star != null:
+			global_position = target_star.global_position
+

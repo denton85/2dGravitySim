@@ -7,14 +7,6 @@
 [node name="Main" type="Node2D"]
 script = ExtResource("1_dm6pr")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-z_index = -10
-offset_left = -4736.0
-offset_top = -4642.0
-offset_right = 5264.0
-offset_bottom = 5358.0
-color = Color(0, 0, 0, 1)
-
 [node name="Star" parent="." instance=ExtResource("2_8n2ff")]
 position = Vector2(862, 531)
 mass = 3000.0
@@ -106,5 +98,13 @@ offset_top = 123.0
 offset_right = 1049.0
 offset_bottom = 146.0
 text = "0"
+
+[node name="ColorRect" type="ColorRect" parent="Camera2D"]
+z_index = -10
+offset_left = -8000.0
+offset_top = -6000.0
+offset_right = 8000.0
+offset_bottom = 6000.0
+color = Color(0, 0, 0, 1)
 
 [connection signal="pressed" from="Camera2D/CanvasLayer/Control/Button" to="." method="_on_button_pressed"]
