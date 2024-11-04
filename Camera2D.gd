@@ -1,6 +1,7 @@
 extends Camera2D
 
 var target_star: Node2D
+var switched = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass
@@ -8,4 +9,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	global_position = Global.biggest_star.global_position
+	if !switched:
+		global_position = Global.biggest_star.global_position
+	else:
+		global_position = target_star.global_position

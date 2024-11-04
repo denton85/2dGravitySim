@@ -3,6 +3,7 @@ extends Node2D
 @onready var camera = $Camera2D
 @onready var label = $Camera2D/CanvasLayer/Control/Label
 @onready var speed = $Camera2D/CanvasLayer/Control/Speed
+var current_star = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -34,7 +35,15 @@ func _unhandled_input(event):
 	if Input.is_action_just_pressed("zoom_out"):
 		camera.zoom.x -= 0.1
 		camera.zoom.y -= 0.1
-		label.text = str(snappedf(camera.zoom.x, 0.1))
+		
+	if Input.is_action_just_pressed("switch_view"):
+		camera.switched = true
+		if current_star < (Global.star_group.size() - 1):
+			current_star += 1
+			camera.target_star = Global.star_group[current_star]
+		elif current_star >= (Global.star_group.size() - 1):
+			current_star = 0
+			camera.target_star = Global.star_group[current_star]
 
 func _on_button_pressed():
 	get_tree().quit()

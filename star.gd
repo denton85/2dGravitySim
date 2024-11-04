@@ -4,7 +4,7 @@ extends CharacterBody2D
 @onready var label = $MassLabel
 @onready var eat = $Eat
 
-var starting_dir = Vector2(randf_range(-1.0, 1.0), randf_range(-1.0, 1.0)) * randf_range(5.0, 15.0)
+var starting_dir = Vector2(randf_range(-1.0, 1.0), randf_range(-1.0, 1.0)) * randf_range(5.0, 45.0)
 
 func _init():
 	Global.add_to_stars.connect(add_star)
@@ -26,7 +26,7 @@ func _physics_process(delta):
 			dir = i.global_position - self.global_position
 			# A small buffer zone to keep stars from increasing velocity really 
 			# fast when they eat another star. Might need to be adjusted.
-			if global_position.distance_to(i.global_position) >= 16:
+			if global_position.distance_to(i.global_position) >= 25:
 				var v = (dir.normalized() * i.mass) / pow(global_position.distance_to(i.global_position), 2)
 				velos.append(v)
 	
