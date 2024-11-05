@@ -12,3 +12,6 @@ Each "Star" Scene has an exported variable custom_velocity boolean that can be t
 
 In the editor, you can drag in new star scenes or delete existing stars. You can move them around or adjust their masses. There is also a "black hole" scene that is unfinished, it acts like a star with huge mass that doesn't move at all. It may be removed later.
 
+EDITING:
+
+Work in progress, when you open the game you can now adjust the inital velocity before starting the sim. You can still adjust from within the editor. Mass, randomness, and direction will all be editable at some point from within the game, as well as the ability to add new stars.
