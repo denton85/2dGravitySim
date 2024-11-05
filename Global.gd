@@ -1,8 +1,10 @@
 extends Node
 
 signal add_to_stars
+signal toggle_ui
 
-
+var active: bool = false
+var edit_mode: bool = false
 
 var star_group: Array = []
 var biggest_star: Node2D

@@ -1,7 +1,9 @@
 extends CharacterBody2D
 
+
 @onready var label = $MassLabel
 @onready var eat = $Eat
+
 
 @export var mass: float = 1000.0
 @export var custom_velocity: bool = false # This enables custom initial velocities
@@ -23,21 +25,24 @@ var starting_dir = Vector2.ZERO
 var old_pos = Vector2.ZERO
 var current_speed: float
 
-
 func _init():
 	Global.add_to_stars.connect(add_star)
+	Global.toggle_ui.connect(toggle_ui_elements)
 
 func _ready():
 	label.text = str(mass)
 	if custom_velocity == false:
 		starting_dir = Vector2(randf_range(-1.0, 1.0), randf_range(-1.0, 1.0)) * randf_range(get_parent().STARTING_MIN_VELOCITY, get_parent().STARTING_MAX_VELOCITY)
+		velocity = starting_dir
 	else:
-		starting_dir = (c_dir.normalized() * randf_range(c_min, c_max))
-	velocity = starting_dir
+		add_custom_velo()
 	
 func _physics_process(delta):
 	if not Engine.is_editor_hint():
 		indicator.visible = false
+
+	if Global.active == false:
+		return
 	
 	var dir = Vector2.ZERO
 	var velos : Array[Vector2]
@@ -92,3 +97,12 @@ func die():
 	Global.star_group.erase(self)
 	queue_free()
 	
+func toggle_ui_elements():
+	if Global.active != true:
+		pass
+	else:
+		pass
+
+func add_custom_velo():
+	starting_dir = (c_dir.normalized() * randf_range(c_min, c_max))
+	velocity = starting_dir

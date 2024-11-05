@@ -7,41 +7,9 @@
 [node name="Main" type="Node2D"]
 script = ExtResource("1_dm6pr")
 
-[node name="Star" parent="." instance=ExtResource("2_8n2ff")]
-position = Vector2(862, 531)
-mass = 3000.0
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Star2" parent="." instance=ExtResource("2_8n2ff")]
-position = Vector2(386, -119)
-mass = 300.0
-
-[node name="Star3" parent="." instance=ExtResource("2_8n2ff")]
-position = Vector2(428, 662)
-mass = 500.0
-
-[node name="Star4" parent="." instance=ExtResource("2_8n2ff")]
-position = Vector2(793, 33)
-
-[node name="Star5" parent="." instance=ExtResource("2_8n2ff")]
-position = Vector2(1286, 103)
-
-[node name="Star6" parent="." instance=ExtResource("2_8n2ff")]
-position = Vector2(142, 227)
-mass = 7777.0
-c_dir = Vector2(4, -0.5)
-c_max = 50.0
-
-[node name="Star7" parent="." instance=ExtResource("2_8n2ff")]
-position = Vector2(407, 199)
-c_dir = Vector2(4, 3)
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(569, 325)
-script = ExtResource("3_6whig")
-
-[node name="CanvasLayer" type="CanvasLayer" parent="Camera2D"]
-
-[node name="Control" type="Control" parent="Camera2D/CanvasLayer"]
+[node name="Control" type="Control" parent="CanvasLayer"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -49,7 +17,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Button" type="Button" parent="Camera2D/CanvasLayer/Control"]
+[node name="Button" type="Button" parent="CanvasLayer/Control"]
 custom_minimum_size = Vector2(100, 60)
 layout_mode = 1
 offset_left = 100.0
@@ -58,7 +26,22 @@ offset_right = 200.0
 offset_bottom = 140.0
 text = "Quit"
 
-[node name="ZoomText" type="Label" parent="Camera2D/CanvasLayer/Control"]
+[node name="EditConditions" type="Button" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -95.0
+offset_top = -76.0
+offset_right = 96.0
+offset_bottom = -45.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Edit Starting Conditions"
+
+[node name="ZoomText" type="Label" parent="CanvasLayer/Control"]
 layout_mode = 0
 offset_left = 910.0
 offset_top = 101.0
@@ -66,7 +49,7 @@ offset_right = 999.0
 offset_bottom = 124.0
 text = "Zoom level:"
 
-[node name="SpeedText" type="Label" parent="Camera2D/CanvasLayer/Control"]
+[node name="SpeedText" type="Label" parent="CanvasLayer/Control"]
 layout_mode = 0
 offset_left = 910.0
 offset_top = 123.0
@@ -74,7 +57,7 @@ offset_right = 1010.0
 offset_bottom = 146.0
 text = "Speed Scale: "
 
-[node name="Label" type="Label" parent="Camera2D/CanvasLayer/Control"]
+[node name="Label" type="Label" parent="CanvasLayer/Control"]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -86,7 +69,7 @@ offset_bottom = 124.0
 grow_horizontal = 0
 text = "1"
 
-[node name="Speed" type="Label" parent="Camera2D/CanvasLayer/Control"]
+[node name="Speed" type="Label" parent="CanvasLayer/Control"]
 layout_mode = 0
 offset_left = 1009.0
 offset_top = 123.0
@@ -94,20 +77,76 @@ offset_right = 1049.0
 offset_bottom = 146.0
 text = "0"
 
-[node name="StarSpeed" type="Label" parent="Camera2D/CanvasLayer/Control"]
+[node name="StarSpeed" type="Label" parent="CanvasLayer/Control"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -20.0
-offset_top = -123.0
-offset_right = 20.0
-offset_bottom = -100.0
+offset_left = -78.0
+offset_top = -124.0
+offset_right = -33.0
+offset_bottom = -101.0
 grow_horizontal = 2
 grow_vertical = 0
-text = "Initial"
+
+[node name="StarMass" type="Label" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 49.5
+offset_top = -124.0
+offset_right = 94.5
+offset_bottom = -101.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="StartSim" type="Button" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -66.0
+offset_top = -115.0
+offset_right = 67.0
+offset_bottom = -84.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Start Simulation"
+
+[node name="ExitEditMode" type="Label" parent="CanvasLayer/Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -118.5
+offset_top = 70.0
+offset_right = 118.5
+offset_bottom = 93.0
+grow_horizontal = 2
+text = "Press Escape To Exit Edit Mode"
+
+[node name="Canv2" type="CanvasLayer" parent="CanvasLayer"]
+follow_viewport_enabled = true
+
+[node name="Star" parent="." instance=ExtResource("2_8n2ff")]
+position = Vector2(570, 355)
+mass = 0.1
+
+[node name="Star2" parent="." instance=ExtResource("2_8n2ff")]
+position = Vector2(291, 197)
+mass = 0.1
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(569, 325)
+script = ExtResource("3_6whig")
 
 [node name="ColorRect" type="ColorRect" parent="Camera2D"]
 z_index = -10
@@ -117,4 +156,6 @@ offset_right = 8000.0
 offset_bottom = 6000.0
 color = Color(0, 0, 0, 1)
 
-[connection signal="pressed" from="Camera2D/CanvasLayer/Control/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/EditConditions" to="." method="_on_edit_conditions_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/StartSim" to="." method="_on_start_sim_pressed"]

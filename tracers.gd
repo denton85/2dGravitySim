@@ -1,7 +1,7 @@
 class_name Trail
 extends Line2D
 
-const MAX_POINTS: int = 1000
+const MAX_POINTS: int = 500
 @onready var curve := Curve2D.new()
 
 
