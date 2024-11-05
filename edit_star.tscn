@@ -9,20 +9,34 @@ anchors_preset = 0
 script = ExtResource("1_vbhly")
 
 [node name="EditLabel" type="Label" parent="."]
-offset_left = 62.0
-offset_top = 150.0
-offset_right = 184.0
-offset_bottom = 173.0
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -27.0
+offset_top = -23.0
+offset_right = 95.0
+grow_horizontal = 2
+grow_vertical = 0
 text = "Edit Velocity"
 
 [node name="CheckButton" type="CheckButton" parent="."]
-offset_left = 20.0
-offset_top = 150.0
-offset_right = 64.0
-offset_bottom = 174.0
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -71.0
+offset_top = -22.0
+offset_right = -27.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 0
 
 [node name="VLabel" type="Label" parent="."]
-visible = false
 offset_left = 42.0
 offset_top = 30.0
 offset_right = 164.0
@@ -30,7 +44,6 @@ offset_bottom = 53.0
 text = "Edit Velocity"
 
 [node name="Velocity" type="HSlider" parent="."]
-visible = false
 custom_minimum_size = Vector2(150, 40)
 layout_mode = 1
 anchors_preset = 5
@@ -43,7 +56,6 @@ grow_horizontal = 2
 max_value = 500.0
 
 [node name="RLabel" type="Label" parent="."]
-visible = false
 offset_left = 42.0
 offset_top = 80.0
 offset_right = 176.0
@@ -51,7 +63,6 @@ offset_bottom = 103.0
 text = "Edit Randomness"
 
 [node name="Range" type="HSlider" parent="."]
-visible = false
 custom_minimum_size = Vector2(150, 40)
 layout_mode = 1
 anchors_preset = 5
@@ -64,6 +75,30 @@ offset_bottom = 90.0
 grow_horizontal = 2
 max_value = 500.0
 
+[node name="MLabel" type="Label" parent="."]
+offset_left = 42.0
+offset_top = 130.0
+offset_right = 176.0
+offset_bottom = 153.0
+text = "Edit Mass"
+
+[node name="Mass" type="HSlider" parent="."]
+custom_minimum_size = Vector2(150, 40)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -75.0
+offset_top = 100.0
+offset_right = 75.0
+offset_bottom = 140.0
+grow_horizontal = 2
+min_value = 0.1
+max_value = 50000.0
+value = 0.1
+allow_greater = true
+
 [connection signal="pressed" from="CheckButton" to="." method="_on_check_button_pressed"]
 [connection signal="drag_ended" from="Velocity" to="." method="_on_velocity_drag_ended"]
 [connection signal="drag_ended" from="Range" to="." method="_on_range_drag_ended"]
+[connection signal="drag_ended" from="Mass" to="." method="_on_mass_drag_ended"]

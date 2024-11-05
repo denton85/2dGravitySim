@@ -38,6 +38,8 @@ func _ready():
 		add_custom_velo()
 	
 func _physics_process(delta):
+	label.text = str(mass)
+	
 	if not Engine.is_editor_hint():
 		indicator.visible = false
 
@@ -46,7 +48,6 @@ func _physics_process(delta):
 	
 	var dir = Vector2.ZERO
 	var velos : Array[Vector2]
-	label.text = str(mass)
 	
 	
 	for i in Global.star_group:

@@ -138,11 +138,10 @@ follow_viewport_enabled = true
 
 [node name="Star" parent="." instance=ExtResource("2_8n2ff")]
 position = Vector2(570, 355)
-mass = 0.1
 
 [node name="Star2" parent="." instance=ExtResource("2_8n2ff")]
 position = Vector2(291, 197)
-mass = 0.1
+mass = 500.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(569, 325)
@@ -155,6 +154,12 @@ offset_top = -6000.0
 offset_right = 8000.0
 offset_bottom = 6000.0
 color = Color(0, 0, 0, 1)
+
+[node name="Star3" parent="." instance=ExtResource("2_8n2ff")]
+position = Vector2(979, 328)
+
+[node name="Star4" parent="." instance=ExtResource("2_8n2ff")]
+position = Vector2(341, 559)
 
 [connection signal="pressed" from="CanvasLayer/Control/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/EditConditions" to="." method="_on_edit_conditions_pressed"]
