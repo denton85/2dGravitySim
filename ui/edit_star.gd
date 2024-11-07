@@ -32,8 +32,6 @@ func _on_check_button_pressed():
 	v_label.visible = !v_label.visible
 	r_label.visible = !r_label.visible
 	m_label.visible = !m_label.visible
-	
-
 
 func _on_velocity_drag_ended(value_changed):
 	star_id.c_min = velocity.value

@@ -107,7 +107,7 @@ func toggle_ui_layer():
 	if Global.active == false && Global.edit_mode == true:
 		for i in Global.star_group:
 			var edit = EDIT_STAR.instantiate()
-			edit.global_position = i.global_position + Vector2(15, -100)
+			edit.global_position = i.global_position + Vector2(-100, -180)
 			edit.star_id = i
 			canv_2.add_child(edit)
 	else:
