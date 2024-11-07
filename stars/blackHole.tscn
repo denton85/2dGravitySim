@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://c83alyc36x1pn"]
 
-[ext_resource type="Script" path="res://blackHole.gd" id="1_3qqqt"]
+[ext_resource type="Script" path="res://scripts/blackHole.gd" id="1_3qqqt"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dtdpi"]
 

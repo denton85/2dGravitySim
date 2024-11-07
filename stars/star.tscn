@@ -1,9 +1,9 @@
 [gd_scene load_steps=9 format=3 uid="uid://bny6a1ct5lf5f"]
 
-[ext_resource type="Script" path="res://star.gd" id="1_puwqu"]
-[ext_resource type="Texture2D" uid="uid://gnn3ndmqev5q" path="res://round.png" id="2_aqruo"]
-[ext_resource type="PackedScene" uid="uid://ds086iwoqsw68" path="res://tracers.tscn" id="3_osr5l"]
-[ext_resource type="Script" path="res://DirectionIndicator.gd" id="4_ewsle"]
+[ext_resource type="Script" path="res://scripts/star.gd" id="1_puwqu"]
+[ext_resource type="Texture2D" uid="uid://gnn3ndmqev5q" path="res://assets/round.png" id="2_aqruo"]
+[ext_resource type="PackedScene" uid="uid://ds086iwoqsw68" path="res://effects/tracers.tscn" id="3_osr5l"]
+[ext_resource type="Script" path="res://scripts/DirectionIndicator.gd" id="4_ewsle"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7stv1"]
 radius = 5.0

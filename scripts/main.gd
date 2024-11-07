@@ -10,7 +10,7 @@ extends Node2D
 @onready var exit_edit_mode = $CanvasLayer/Control/ExitEditMode
 @onready var edit_conditions = $CanvasLayer/Control/EditConditions
 
-const EDIT_STAR = preload("res://edit_star.tscn")
+const EDIT_STAR = preload("res://ui/edit_star.tscn")
 
 @export var fullscreen: bool = true
 

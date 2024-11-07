@@ -14,6 +14,8 @@ func _ready():
 	v_label.text = "Velocity: " + str(star_id.c_min)
 	r_label.text = "Randomness: " + str(star_id.c_min)
 	m_label.text = "Mass: " + str(star_id.mass)
+	velocity.value = (star_id.c_min + star_id.c_max) / 2
+	mass.value = star_id.mass
 	
 
 
