@@ -14,4 +14,4 @@ In the editor, you can drag in new star scenes or delete existing stars. You can
 
 EDITING:
 
-Work in progress, when you open the game you can now adjust the inital velocity and the mass before starting the sim. You can still adjust from within the editor. Randomness and direction will all be editable at some point from within the game, as well as the ability to add new stars.
+Work in progress, when you open the game you can now adjust the inital velocity and the mass before starting the sim. You can also add stars, although this isn't finished. Currently you have to use the hotkey "p" to place AFTER you've pressed the Add Star button. The star will be added where your cursor is. You can still adjust from within the editor. Randomness and direction will all be editable at some point from within the game.
