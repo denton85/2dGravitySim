@@ -17,3 +17,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
+
+func clear_stars():
+	star_group.clear()
+	biggest_star = null

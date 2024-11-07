@@ -6,6 +6,7 @@
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_dm6pr")
+fullscreen = false
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -133,6 +134,19 @@ offset_bottom = 93.0
 grow_horizontal = 2
 text = "Press Escape To Exit Edit Mode"
 
+[node name="AddStar" type="Button" parent="CanvasLayer/Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 100.0
+offset_top = -174.0
+offset_right = 215.0
+offset_bottom = -143.0
+grow_vertical = 2
+text = "Add Star (\"N\")"
+
 [node name="Canv2" type="CanvasLayer" parent="CanvasLayer"]
 follow_viewport_enabled = true
 
@@ -165,3 +179,4 @@ position = Vector2(341, 559)
 [connection signal="pressed" from="CanvasLayer/Control/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/EditConditions" to="." method="_on_edit_conditions_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/StartSim" to="." method="_on_start_sim_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/AddStar" to="." method="_on_add_star_pressed"]
