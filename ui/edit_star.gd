@@ -28,8 +28,11 @@ func _on_check_button_pressed():
 	star_id.custom_velocity = true
 	velocity.visible = !velocity.visible
 	range.visible = !range.visible
+	mass.visible = !mass.visible
 	v_label.visible = !v_label.visible
 	r_label.visible = !r_label.visible
+	m_label.visible = !m_label.visible
+	
 
 
 func _on_velocity_drag_ended(value_changed):
