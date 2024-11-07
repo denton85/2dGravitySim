@@ -1,3 +1,6 @@
+
+<img width="561" alt="Screenshot 2024-11-06 at 7 53 51 PM" src="https://github.com/user-attachments/assets/64ef056a-3db4-447a-8172-cefbdddcb9cb">
+
 **This is a simple 2D gravity sim. Mess around with different starting conditions and see if stable orbits emerge.**
 
 If you want to change between fullscreen and windowed without going into settings, just toggle the exported Fullscreen variable in the Main scene sidebar on the right.
