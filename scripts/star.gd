@@ -1,3 +1,4 @@
+class_name Star
 extends CharacterBody2D
 
 
@@ -29,7 +30,7 @@ var current_speed: float
 func _init():
 	Global.add_to_stars.connect(add_star)
 	Global.toggle_ui.connect(toggle_ui_elements)
-	Global.sim_start.connect(show_tracers)
+	Global.sim_start.connect(start_sim)
 
 func _ready():
 	label.text = str(mass)
@@ -53,7 +54,9 @@ func _physics_process(delta):
 	
 	
 	for i in Global.star_group:
-		if i == self:
+		if i == null:
+			continue
+		elif i == self:
 			continue
 		else:
 			dir = i.global_position - self.global_position
@@ -76,13 +79,20 @@ func _physics_process(delta):
 
 
 func add_star():
-	for i in Global.star_group:
-		if i.mass > self.mass:
-			Global.star_group.append(self)
-			return
-	Global.biggest_star = self
 	Global.star_group.append(self)
+	var max = Global.star_group[0]
+	for i in Global.star_group:
+		if i != null && max == null:
+			max = i
 
+	for i in Global.star_group:
+		if i != null && max != null:
+			if i.mass > max.mass:
+				max = Global.star_group[i]
+	
+	Global.biggest_star = max
+	print(str(Global.biggest_star) + " Done")
+	Global.cam.target_star = max
 
 func _on_eat_body_entered(body):
 	if body == self:
@@ -110,5 +120,21 @@ func add_custom_velo():
 	starting_dir = (c_dir.normalized() * randf_range(c_min, c_max))
 	velocity = starting_dir
 
+func start_sim():
+	show_tracers()
+	save_state()
+
 func show_tracers():
 	tracers.show()
+
+func save_state():
+	var s = StarState.new()
+	s.dir = starting_dir
+	s.mass = mass
+	s.pos = global_position
+	s.vMin = c_min
+	s.vMax = c_max
+	Global.sim_state.append(s)
+
+func load_state():
+	pass

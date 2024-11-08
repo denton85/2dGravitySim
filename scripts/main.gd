@@ -10,6 +10,7 @@ extends Node2D
 @onready var exit_edit_mode = $CanvasLayer/Control/ExitEditMode
 @onready var edit_conditions = $CanvasLayer/Control/EditConditions
 @onready var add_star = $CanvasLayer/Control/AddStar
+@onready var debug = $Debug
 
 const EDIT_STAR = preload("res://ui/edit_star.tscn")
 const STAR = preload("res://stars/star.tscn")
@@ -29,6 +30,7 @@ var current_star = 0
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	Global.toggle_ui.connect(toggle_ui_layer)
+	Global.sim_reset.connect(reset_sim)
 	Global.add_to_stars.emit()
 	label.text = str(camera.zoom.x)
 	speed.text = str(Engine.time_scale)
@@ -102,6 +104,9 @@ func _unhandled_input(event):
 	if Global.edit_mode == true && Input.is_action_just_pressed("add_star_hotkey"):
 		placing_star = true
 
+func _process(delta):
+	debug.text = str(Global.active)
+
 func _on_button_pressed():
 	get_tree().quit()
 
@@ -127,14 +132,15 @@ func toggle_ui_layer():
 	
 	if Global.active == false && Global.edit_mode == true:
 		for i in Global.star_group:
-			var edit = EDIT_STAR.instantiate()
-			var drag = DRAG.instantiate()
-			edit.global_position = i.global_position + Vector2(-100, -180)
-			edit.star_id = i
-			drag.global_position = i.global_position + Vector2(-35, -35)
-			drag.star_id = i
-			canv_2.add_child(edit)
-			canv_2.add_child(drag)
+			if i != null:
+				var edit = EDIT_STAR.instantiate()
+				var drag = DRAG.instantiate()
+				edit.global_position = i.global_position + Vector2(-100, -180)
+				edit.star_id = i
+				drag.global_position = i.global_position + Vector2(-35, -35)
+				drag.star_id = i
+				canv_2.add_child(edit)
+				canv_2.add_child(drag)
 
 func clear_edit_ui():
 	var c = canv_2.get_children()
@@ -145,3 +151,32 @@ func clear_edit_ui():
 func _on_add_star_pressed():
 	add_star.release_focus()
 	placing_star = true
+
+
+func _on_reset_pressed():
+	Global.sim_reset.emit()
+
+func reset_sim():
+	Global.active = false
+
+	for i in get_children():
+		if i is Star:
+			print("Cleared")
+			i.queue_free()
+
+	for i in Global.sim_state:
+		var s = STAR.instantiate()
+		s.global_position = i.pos
+		s.starting_dir = i.dir
+		s.c_min = i.vMin
+		s.c_max = i.vMax
+		s.mass = i.mass
+		s.custom_velocity = true
+		add_child(s)
+	
+	Global.clear_stars()
+	Global.add_to_stars.emit()
+	Global.clear_sim_state()
+	start_sim.show()
+	edit_conditions.show()
+	

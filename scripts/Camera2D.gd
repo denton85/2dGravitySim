@@ -8,7 +8,8 @@ var switched = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
+	Global.cam = self
+	Global.sim_start.connect(target_biggest)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -29,3 +30,13 @@ func _process(delta):
 	elif Global.active == true && !switched && Global.biggest_star != null:
 		star_speed.text = "Speed: " + str(snapped(Global.biggest_star.current_speed, 0.01))
 		star_mass.text = "Mass: " + str(Global.biggest_star.mass)
+
+func target_biggest():
+	pass
+	if Global.biggest_star != null:
+		target_star = Global.biggest_star
+	else:
+		for i in Global.star_group:
+			if i != null:
+				target_star = i
+				return
