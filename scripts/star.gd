@@ -3,6 +3,7 @@ extends CharacterBody2D
 
 @onready var label = $MassLabel
 @onready var eat = $Eat
+@onready var tracers = $Tracers
 
 
 @export var mass: float = 1000.0
@@ -28,6 +29,7 @@ var current_speed: float
 func _init():
 	Global.add_to_stars.connect(add_star)
 	Global.toggle_ui.connect(toggle_ui_elements)
+	Global.sim_start.connect(show_tracers)
 
 func _ready():
 	label.text = str(mass)
@@ -107,3 +109,6 @@ func toggle_ui_elements():
 func add_custom_velo():
 	starting_dir = (c_dir.normalized() * randf_range(c_min, c_max))
 	velocity = starting_dir
+
+func show_tracers():
+	tracers.show()

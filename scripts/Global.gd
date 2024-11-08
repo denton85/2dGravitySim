@@ -2,6 +2,7 @@ extends Node
 
 signal add_to_stars
 signal toggle_ui
+signal sim_start
 
 var active: bool = false
 var edit_mode: bool = false

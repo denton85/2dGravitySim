@@ -13,12 +13,12 @@ extends Node2D
 
 const EDIT_STAR = preload("res://ui/edit_star.tscn")
 const STAR = preload("res://stars/star.tscn")
+const DRAG = preload("res://ui/drag.tscn")
 
 @export var fullscreen: bool = true
 
 var placing_star: bool = false
 var current_star = 0
-
 
 ## Low Limit for intial velocity (across all non custom stars)
 @export var STARTING_MIN_VELOCITY: float = 5.0
@@ -112,6 +112,7 @@ func _on_start_sim_pressed():
 	start_sim.hide()
 	edit_conditions.hide()
 	Global.toggle_ui.emit()
+	Global.sim_start.emit()
 
 func _on_edit_conditions_pressed():
 	Global.edit_mode = true
@@ -122,14 +123,18 @@ func _on_edit_conditions_pressed():
 	add_star.show()
 
 func toggle_ui_layer():
+	clear_edit_ui()
+	
 	if Global.active == false && Global.edit_mode == true:
 		for i in Global.star_group:
 			var edit = EDIT_STAR.instantiate()
+			var drag = DRAG.instantiate()
 			edit.global_position = i.global_position + Vector2(-100, -180)
 			edit.star_id = i
+			drag.global_position = i.global_position + Vector2(-35, -35)
+			drag.star_id = i
 			canv_2.add_child(edit)
-	else:
-		clear_edit_ui()
+			canv_2.add_child(drag)
 
 func clear_edit_ui():
 	var c = canv_2.get_children()
