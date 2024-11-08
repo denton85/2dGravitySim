@@ -21,7 +21,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if v_label != null && m_label != null:
+	if star_id != null:
 		v_label.text = "Velocity: " + str(star_id.c_max)
 		m_label.text = "Mass: " + str(star_id.mass)
 

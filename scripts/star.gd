@@ -85,9 +85,9 @@ func add_star():
 		if i != null && max == null:
 			max = i
 
-	for i in Global.star_group:
-		if i != null && max != null:
-			if i.mass > max.mass:
+	for i in Global.star_group.size():
+		if Global.star_group[i] != null && max != null:
+			if Global.star_group[i].mass > max.mass:
 				max = Global.star_group[i]
 	
 	Global.biggest_star = max

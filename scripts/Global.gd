@@ -4,6 +4,7 @@ signal add_to_stars
 signal toggle_ui
 signal sim_start
 signal sim_reset
+signal star_group_cleared
 
 var active: bool = false
 var edit_mode: bool = false
@@ -25,10 +26,10 @@ func _process(delta):
 	pass
 
 func clear_stars():
-	#star_group.clear()
-	star_group = []
+	star_group.clear()
+	if star_group == []:
+		star_group_cleared.emit()
 	biggest_star = null
 
 func clear_sim_state():
-	sim_state = []
-	#sim_state.clear()
+	sim_state.clear()

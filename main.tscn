@@ -28,6 +28,7 @@ offset_bottom = 140.0
 text = "Quit"
 
 [node name="Reset" type="Button" parent="CanvasLayer/Control"]
+visible = false
 custom_minimum_size = Vector2(100, 60)
 layout_mode = 1
 offset_left = 218.0

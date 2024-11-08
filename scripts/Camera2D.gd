@@ -11,7 +11,6 @@ func _ready():
 	Global.cam = self
 	Global.sim_start.connect(target_biggest)
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if Global.active == false:
@@ -19,9 +18,8 @@ func _process(delta):
 	
 	if Global.active == true && !switched && Global.biggest_star != null:
 		global_position = Global.biggest_star.global_position
-	else:
-		if target_star != null:
-			global_position = target_star.global_position
+	elif Global.active == true && target_star != null:
+		global_position = target_star.global_position
 	
 	if Global.active == true && switched == true && target_star != null:
 		star_speed.text = "Speed: " + str(snapped(target_star.current_speed, 0.01))

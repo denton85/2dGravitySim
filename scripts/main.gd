@@ -11,6 +11,7 @@ extends Node2D
 @onready var edit_conditions = $CanvasLayer/Control/EditConditions
 @onready var add_star = $CanvasLayer/Control/AddStar
 @onready var debug = $Debug
+@onready var reset = $CanvasLayer/Control/Reset
 
 const EDIT_STAR = preload("res://ui/edit_star.tscn")
 const STAR = preload("res://stars/star.tscn")
@@ -20,6 +21,7 @@ const DRAG = preload("res://ui/drag.tscn")
 
 var placing_star: bool = false
 var current_star = 0
+var clearing = false
 
 ## Low Limit for intial velocity (across all non custom stars)
 @export var STARTING_MIN_VELOCITY: float = 5.0
@@ -31,6 +33,7 @@ var current_star = 0
 func _ready():
 	Global.toggle_ui.connect(toggle_ui_layer)
 	Global.sim_reset.connect(reset_sim)
+	Global.star_group_cleared.connect(add_stars_on_reset)
 	Global.add_to_stars.emit()
 	label.text = str(camera.zoom.x)
 	speed.text = str(Engine.time_scale)
@@ -116,6 +119,7 @@ func _on_start_sim_pressed():
 	canvas.follow_viewport_enabled = false
 	start_sim.hide()
 	edit_conditions.hide()
+	reset.show()
 	Global.toggle_ui.emit()
 	Global.sim_start.emit()
 
@@ -124,6 +128,7 @@ func _on_edit_conditions_pressed():
 	Global.toggle_ui.emit()
 	start_sim.hide()
 	edit_conditions.hide()
+	reset.hide()
 	exit_edit_mode.show()
 	add_star.show()
 
@@ -154,6 +159,7 @@ func _on_add_star_pressed():
 
 
 func _on_reset_pressed():
+	reset.hide()
 	Global.sim_reset.emit()
 
 func reset_sim():
@@ -174,9 +180,13 @@ func reset_sim():
 		s.custom_velocity = true
 		add_child(s)
 	
+	clearing = true
 	Global.clear_stars()
-	Global.add_to_stars.emit()
-	Global.clear_sim_state()
-	start_sim.show()
-	edit_conditions.show()
-	
+
+func add_stars_on_reset():
+	if clearing == true:
+		Global.add_to_stars.emit()
+		Global.clear_sim_state()
+		start_sim.show()
+		edit_conditions.show()
+	clearing = false
