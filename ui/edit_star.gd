@@ -21,8 +21,9 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	v_label.text = "Velocity: " + str(star_id.c_max)
-	m_label.text = "Mass: " + str(star_id.mass)
+	if v_label != null && m_label != null:
+		v_label.text = "Velocity: " + str(star_id.c_max)
+		m_label.text = "Mass: " + str(star_id.mass)
 
 func _on_check_button_pressed():
 	star_id.custom_velocity = true
